@@ -34,7 +34,7 @@ def send():
         print('ERROR', e)
         conn.close()
         return str({'result': 'failure'}), 500
-    
+
     conn.close()
     return str({'result': 'success'})
 
