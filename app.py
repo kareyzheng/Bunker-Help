@@ -29,8 +29,14 @@ def send():
             sql = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, `resources`, `phone`) " \
                   "VALUES (%s, %s, %s, %s, %s, %s, %s);"
             cursor.execute(sql, (name, address, zip, city, capacity, notes, phone))
-    print("Success")
-    return render_template("test.html", address=address, zip=zip)
+        conn.commit()
+    except Exception as e:
+        print('ERROR', e)
+        conn.close()
+        return str({'result': 'failure'}), 500
+    
+    conn.close()
+    return str({'result': 'success'})
 
 
 @app.route("/")
