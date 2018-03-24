@@ -14,6 +14,24 @@ def get_database_connection():
          cursorclass=pymysql.cursors.DictCursor
      )
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/Shelter/", methods=['POST'])
+def shelter():
+    return render_template("Shelter.html")
+
+@app.route("/provide")
+def provide():
+    zipcode = request.form['ZipCode']
+    people = request.form['People']
+
+@app.route("/ShelterProvider/")
+def shelterprovider():
+    print("Success")
+    return render_template("ShelterProvider.html")
+
 @app.route('/send/', methods=['POST'])
 def send():
     name = request.form['Name']
@@ -23,34 +41,17 @@ def send():
     capacity = request.form['Capacity']
     notes = request.form['Notes']
     phone = request.form['Phone']
+
     conn = get_database_connection()
-    try:
-        with conn.cursor() as cursor:
-            sql = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, `resources`, `phone`) " \
-                  "VALUES (%s, %s, %s, %s, %s, %s, %s);"
-            cursor.execute(sql, (name, address, zip, city, capacity, notes, phone))
-        conn.commit()
-    except Exception as e:
-        print('ERROR', e)
-        conn.close()
-        return str({'result': 'failure'}), 500
+
+    cursor = conn.cursor
+    shelters = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, `resources`, `phone`) " \
+          "VALUES (%s, %s, %s, %s, %s, %s, %s);"
+    cursor.execute(shelters, (name, address, zip, city, capacity, notes, phone))
+    conn.commit()
 
     conn.close()
-    return str({'result': 'success'})
-
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-@app.route("/Shelter/", methods=['POST'])
-def shelter():
-    return render_template("Shelter.html")
-
-@app.route("/ShelterProvider/")
-def shelterprovider():
-    print("Success")
-    return render_template("ShelterProvider.html")
+    return render_template("success.html")
 
 @app.route("/success/")
 def success():
