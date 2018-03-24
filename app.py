@@ -35,11 +35,11 @@ def provide():
     cityH = request.form['CityH']
     conn = get_database_connection()
 
-    cursor = conn.cursor()
-    avail = "SELECT address FROM shelter WHERE zipcode=%s AND capacity>=%s;"
-    cursor.execute(avail, (zipcode, people))
-    match = str([item['address'] for item in cursor.fetchall()])
-    list_matches = match.replace(",", os.linesep)
+    #cursor = conn.cursor()
+    #avail = "SELECT address FROM shelter WHERE zipcode=%s AND capacity>=%s;"
+    #cursor.execute(avail, (zipcode, people))
+    #match = str([item['address'] for item in cursor.fetchall()])
+    #list_matches = match.replace(",", os.linesep)
 
     #if match == "()":
     #    avail = "SELECT * FROM shelter WHERE city=%s AND capacity>=%s;"
@@ -47,8 +47,8 @@ def provide():
     #    match = cursor.fetchall()
 
 
-    conn.close()
-    return render_template("test.html", b=list_matches, end="\n")
+    #conn.close()
+    #return render_template("test.html", b=list_matches, end="\n")
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
