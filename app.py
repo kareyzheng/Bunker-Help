@@ -1,6 +1,11 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pymysql
 
+import gmaps
+import googlemaps
+import psycopg2
+
+
 app = Flask(__name__)
 
 
@@ -62,7 +67,15 @@ def send():
     conn.commit()
 
     conn.close()
-    return render_template("map.html", address=address)
+    gmaps = googlemaps.Client(key="AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs")
+
+    results = gmaps.geocode(address+zip+city)
+
+    for result in results:
+        geo = result['geometry']
+        lat, lng = geo['location']['lat'], geo['location']['lng']
+        position = ("{lat: %s, lng: %s}" % (lat, lng))
+    return render_template("map.html", address=address, zip=zip, city=city, position=position)
 
 
 if __name__ == '__main__':

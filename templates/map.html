@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Find a Shelter</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Find a Shelter</title>
     <style>
        #map {
         height: 400px;
@@ -18,19 +20,59 @@
     <div id="map"></div>
     <script>
 
+
+
+        //converting the address to a latitude:longitude tuple
+
+     /* function geocode(){
+        var location = '{{address, zip, city}}';
+        axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+          params:{
+            address:location,
+            key:'AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs'
+          }
+        })
+        .then(function(response){
+
+          //logging full response from the API
+
+          console.log(response);
+
+          //Finding the Formatted Address
+          var addressFormated = response.data.results[0].formatted_address;
+          var latitude = response.data.results[0].geometry.location.lat;
+          var longitude = response.data.results[0].geometry.location.lng;
+          var MarkerPos = {lat: latitude, lng: longitude};
+          console.log(MarkerPos);
+          return {lat: latitude, lng: longitude} ;
+
+        })
+        .catch(function(error){
+          console.log(error);
+          return(null);
+        });
+
+      }*/
+
+
+
+
+
       function initMap() {
         //var address =
-        var midpoint = {lat: 40, lng: -73};
+        var midpoint = {"lat": 40, "lng": -73};
         var options = {
             zoom: 4,
             center: midpoint}
-        var MarkerPos = {lat: 20, lng: -40}
+
 
           var map = new
           google.maps.Map(document.getElementById('map'), options);
-
+        //var position = geocode();
+        console.log("im in init map");
+        //console.log(position);
         var marker = new google.maps.Marker({
-          position: MarkerPos,
+          position: {{position}},
           map:map
         });
 
@@ -46,6 +88,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs&callback=initMap">
     </script>
+
 
   Thank you for aiding your community in times of need
 
