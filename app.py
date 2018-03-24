@@ -19,6 +19,16 @@ def get_database_connection():
          charset='utf8mb4',
          cursorclass=pymysql.cursors.DictCursor
      )
+def geo(address):
+    gmaps = googlemaps.Client(key="AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs")
+
+    results = gmaps.geocode(address)
+
+    for result in results:
+        geo = result['geometry']
+        lat, lng = geo['location']['lat'], geo['location']['lng']
+        position = ("{lat: %s, lng: %s}" % (lat, lng))
+    return(position)
 
 @app.route("/")
 def home():
@@ -34,6 +44,9 @@ def provide():
     people = request.form['People']
     cityH = request.form['CityH']
     conn = get_database_connection()
+    return render_template("ShelterSeekerMap .html")
+
+
 '''
     #cursor = conn.cursor()
     avail = "SELECT address FROM shelter;"
@@ -53,9 +66,9 @@ def provide():
     #    match = cursor.fetchall()
 
 
-    #conn.close()
-    #return render_template("test.html", b=list_matches, end="\n")
-'''
+    #conn.close()'''
+
+
 @app.route("/ShelterProvider/")
 def shelterprovider():
     print("Success")
@@ -92,14 +105,9 @@ def send():
     conn.commit()
 
     conn.close()
-    gmaps = googlemaps.Client(key="AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs")
 
-    results = gmaps.geocode(address+zip+city)
+    position = geo(address)
 
-    for result in results:
-        geo = result['geometry']
-        lat, lng = geo['location']['lat'], geo['location']['lng']
-        position = ("{lat: %s, lng: %s}" % (lat, lng))
     return render_template("ShelterProviderMap.html", address=address, zip=zip, city=city, position=position)
 
 
