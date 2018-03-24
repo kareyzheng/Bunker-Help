@@ -40,11 +40,16 @@ def shelter():
 
 @app.route("/provide/", methods=['POST'])
 def provide():
-    zipcode = request.form['ZipCodeH']
+    halfAddress = request.form['AddressH']
+    zip = request.form['ZipCodeH']
     people = request.form['People']
-    cityH = request.form['CityH']
+    city = request.form['CityH']
     conn = get_database_connection()
-    return render_template("ShelterSeekerMap .html")
+    address = halfAddress+" " + zip+" " + city
+    print(address)
+    position = geo(address)
+    print(position)
+    return render_template("ShelterSeekerMap .html", position=position)
 
 
 '''
