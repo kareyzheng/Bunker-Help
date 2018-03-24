@@ -4,8 +4,7 @@ import json
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
-=======
+
 #
 # def get_database_connection():
 #     return pymysql.connect(
@@ -16,19 +15,6 @@ app = Flask(__name__)
 #         charset='utf8mb4',
 #         cursorclass=pymysql.cursors.DictCursor
 #     )
-
-
->>>>>>> 0baf12fb1fd632acbfca04bacad4d9947318fd42
-
-def get_database_connection():
-    return pymysql.connect(
-        host='localhost',
-        user='root',
-        password='password',
-        db='todo_database',
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor
-     )
 
 @app.route('/send', methods=['GET', 'POST'])
 def send():
@@ -73,12 +59,10 @@ def shelterprovider():
     print("Success")
     return render_template("ShelterProvider.html")
 
-<<<<<<< HEAD
 @app.route("/success/")
 def success():
     return render_template("success.html")
-=======
->>>>>>> 0baf12fb1fd632acbfca04bacad4d9947318fd42
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
