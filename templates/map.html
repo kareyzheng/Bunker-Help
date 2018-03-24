@@ -14,17 +14,18 @@
 
 
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3>My shelter</h3>
     <div id="map"></div>
     <script>
+
       function initMap() {
         var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: uluru
+          center: ({lat: 40.70645880000001, lng: -73.9447634})
         });
         var marker = new google.maps.Marker({
-          position: uluru,
+          position: ({lat: 40.70645880000001, lng: -73.9447634}),
           map: map
         });
       }
@@ -33,5 +34,6 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs&callback=initMap">
     </script>
 
+  Thank you for aiding your community in times of need
 
 </html>

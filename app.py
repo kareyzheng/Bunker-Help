@@ -32,6 +32,17 @@ def shelterprovider():
     print("Success")
     return render_template("ShelterProvider.html")
 
+@app.route("/map/", methods=['POST'])
+def map():
+    name = request.form['Name']
+    address = request.form['Address']
+    city = request.form['City']
+    zip = request.form['ZipCode']
+    capacity = request.form['Capacity']
+    notes = request.form['Notes']
+    phone = request.form['Phone']
+    return render_template("map.html")
+
 @app.route('/send/', methods=['POST'])
 def send():
     name = request.form['Name']
