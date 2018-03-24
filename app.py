@@ -15,7 +15,15 @@ def get_database_connection():
         cursorclass=pymysql.cursors.DictCursor
      )
 
-
+@app.route('/send', methods=['GET', 'POST'])
+def send():
+    if request.method == "POST":
+        address = request.form['Adress']
+        city = request.form['City']
+        zip = request.form['ZipCode']
+        capacity = request.form['Capacity']
+        notes = request.form['Notes']
+    return render_template("test.html", address=address, city=city, zip=zip,capacity=capacity)
 
 
 @app.route("/")
@@ -28,6 +36,7 @@ def shelter():
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
+    print("Success")
     return render_template("ShelterProvider.html")
 
 @app.route("/success/")

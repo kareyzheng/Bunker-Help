@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <meta charset="UTF-8">
     <title>ShelterProvider</title>
 </head>
 <body>
-    <form action="/needs.php">
+    <form method="POST" action="/send">
+        <div class="form-group"></div>
         <center>Address: <input type="text" name="Address"><center><br>
         <center>City: <input type="text" name="City"><center><br>
         <center>Zip Code: <input type="text" name="ZipCode"><center><br>
         <center>Capacity: <input type="text" name="Capacity"><center><br>
         <center>Notes: <input type="text" name="Notes"><center><br>
+        </div>
+           <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
 
-            <a href="/success/"><input type="submit" value="Submit" onclick="Success()"></a>
 
-</form>
 
 <p>Click the "Submit" button when done.</p>
 
