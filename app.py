@@ -34,11 +34,17 @@ def provide():
     people = request.form['People']
     cityH = request.form['CityH']
     conn = get_database_connection()
-
+'''
     #cursor = conn.cursor()
-    #avail = "SELECT address FROM shelter WHERE zipcode=%s AND capacity>=%s;"
-    #cursor.execute(avail, (zipcode, people))
-    #match = str([item['address'] for item in cursor.fetchall()])
+    avail = "SELECT address FROM shelter;"
+    cursor.execute(avail)
+    address = [item['address'] for item in cursor.fetchall()]
+    avail = "SELECT city FROM shelter;"
+    city = [item['city'] for item in cursor.fetchall()]
+    avail = "SELECT zipcode FROM shelter;"
+    city = [item['zipcode'] for item in cursor.fetchall()]
+    def iterate():
+        for i in address{}
     #list_matches = match.replace(",", os.linesep)
 
     #if match == "()":
@@ -49,7 +55,7 @@ def provide():
 
     #conn.close()
     #return render_template("test.html", b=list_matches, end="\n")
-
+'''
 @app.route("/ShelterProvider/")
 def shelterprovider():
     print("Success")
@@ -69,12 +75,13 @@ def map():
 @app.route('/send/', methods=['POST'])
 def send():
     name = request.form['Name']
-    address = request.form['Address']
+    halfAddress = request.form['Address']
     city = request.form['City']
     zip = request.form['ZipCode']
     capacity = request.form['Capacity']
     notes = request.form['Notes']
     phone = request.form['Phone']
+    address = halfAddress+" " + zip+" " + city
     conn = get_database_connection()
 
     cursor = conn.cursor()
@@ -93,7 +100,7 @@ def send():
         geo = result['geometry']
         lat, lng = geo['location']['lat'], geo['location']['lng']
         position = ("{lat: %s, lng: %s}" % (lat, lng))
-    return render_template("map.html", address=address, zip=zip, city=city, position=position)
+    return render_template("ShelterProviderMap.html", address=address, zip=zip, city=city, position=position)
 
 
 if __name__ == '__main__':
