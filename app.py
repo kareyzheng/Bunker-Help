@@ -1,29 +1,34 @@
-from flask import Flask, request, render_template, send_from_directory
-import json
-# import pymysql.cursors
+from flask import Flask, request, render_template
+import pymysql.cursors
 
 app = Flask(__name__)
 
 
-#
-# def get_database_connection():
-#     return pymysql.connect(
-#         host='localhost',
-#         user='shelter',
-#         password='password',
-#         db='shelter_database',
-#         charset='utf8mb4',
-#         cursorclass=pymysql.cursors.DictCursor
-#     )
+def get_database_connection():
+    return pymysql.connect(
+         host='localhost',
+         user='shelter',
+         password='password',
+         db='shelter_database',
+         charset='utf8mb4',
+         cursorclass=pymysql.cursors.DictCursor
+     )
 
 @app.route('/send/', methods=['POST'])
 def send():
-
+    name = request.form['Name']
     address = request.form['Address']
     city = request.form['City']
     zip = request.form['ZipCode']
     capacity = request.form['Capacity']
     notes = request.form['Notes']
+    phone = request.form['Phone']
+    conn = get_database_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, `resources`, `phone`) " \
+                  "VALUES (%s, %s, %s, %s, %s, %s, %s);"
+            cursor.execute(sql, (name, address, zip, city, capacity, notes, phone))
     print("Success")
     return render_template("test.html", address=address, zip=zip)
 
@@ -35,24 +40,6 @@ def home():
 @app.route("/Shelter/", methods=['POST'])
 def shelter():
     return render_template("Shelter.html")
-
-
-def create():
-    name = request.headers['Content']
-    conn = get_database_connection()
-    try:
-        with conn.cursor() as cursor:
-            sql = "INSERT INTO `todo` (`item`) VALUES (%s);"
-            cursor.execute(sql, (name))
-        conn.commit()
-    except Exception as e:
-        print('ERROR', e)
-        conn.close()
-        return str({'result': 'failure'}), 500
-
-    conn.close()
-    return str({'result': 'success'})
-
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
