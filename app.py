@@ -62,7 +62,7 @@ def send():
     conn.commit()
 
     conn.close()
-    return render_template("map.html")
+    return render_template("map.html", address=address)
 
 
 if __name__ == '__main__':

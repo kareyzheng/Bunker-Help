@@ -19,14 +19,27 @@
     <script>
 
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: ({lat: 40.70645880000001, lng: -73.9447634})
-        });
+        //var address =
+        var midpoint = {lat: 40, lng: -73};
+        var options = {
+            zoom: 4,
+            center: midpoint}
+        var MarkerPos = {lat: 20, lng: -40}
+
+          var map = new
+          google.maps.Map(document.getElementById('map'), options);
+
         var marker = new google.maps.Marker({
-          position: ({lat: 40.70645880000001, lng: -73.9447634}),
-          map: map
+          position: MarkerPos,
+          map:map
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: '<h1>'+ '{{ address }}' +': Has been added as a private shelter.</h1>'
+        });
+
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker)
         });
       }
     </script>
