@@ -23,8 +23,9 @@ def send():
         zip = request.form['ZipCode']
         capacity = request.form['Capacity']
         notes = request.form['Notes']
+        print("Success")
     return render_template("test.html", address=address, city=city, zip=zip,capacity=capacity)
-
+    print("Fail")
 
 @app.route("/")
 def home():
