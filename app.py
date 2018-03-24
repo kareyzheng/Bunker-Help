@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 import pymysql
+import os
 
 import gmaps
 import googlemaps
@@ -27,10 +28,27 @@ def home():
 def shelter():
     return render_template("Shelter.html")
 
-@app.route("/provide")
+@app.route("/provide/", methods=['POST'])
 def provide():
-    zipcode = request.form['ZipCode']
+    zipcode = request.form['ZipCodeH']
     people = request.form['People']
+    cityH = request.form['CityH']
+    conn = get_database_connection()
+
+    cursor = conn.cursor()
+    avail = "SELECT address FROM shelter WHERE zipcode=%s AND capacity>=%s;"
+    cursor.execute(avail, (zipcode, people))
+    match = str([item['address'] for item in cursor.fetchall()])
+    list_matches = match.replace(",", os.linesep)
+
+    #if match == "()":
+    #    avail = "SELECT * FROM shelter WHERE city=%s AND capacity>=%s;"
+    #    cursor.execute(avail, (zipcode, people))
+    #    match = cursor.fetchall()
+
+
+    conn.close()
+    return render_template("test.html", b=list_matches, end="\n")
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
