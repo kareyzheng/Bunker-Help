@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template
-import pymysql.cursors
+from flask import Flask, request, render_template, redirect, url_for
+import pymysql
 
 app = Flask(__name__)
 
@@ -52,12 +52,12 @@ def send():
     capacity = request.form['Capacity']
     notes = request.form['Notes']
     phone = request.form['Phone']
-
     conn = get_database_connection()
 
-    cursor = conn.cursor
-    shelters = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, `resources`, `phone`) " \
-          "VALUES (%s, %s, %s, %s, %s, %s, %s);"
+    cursor = conn.cursor()
+
+    shelters = "INSERT INTO `shelter` (`name`, `address`, `zipcode`, `city`, `capacity`, " \
+               "`resources`, `phone`) VALUES (%s, %s, %s, %s, %s, %s, %s);"
     cursor.execute(shelters, (name, address, zip, city, capacity, notes, phone))
     conn.commit()
 
