@@ -27,7 +27,7 @@ def shelter():
     return render_template("Shelter.html")
 
 @app.route("/ShelterProvider/")
-def shelter():
+def shelterprovider():
     return render_template("ShelterProvider.html")
 
 if __name__ == '__main__':
