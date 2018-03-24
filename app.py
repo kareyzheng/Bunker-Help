@@ -4,6 +4,21 @@ import json
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
+=======
+#
+# def get_database_connection():
+#     return pymysql.connect(
+#         host='localhost',
+#         user='shelter',
+#         password='password',
+#         db='shelter_database',
+#         charset='utf8mb4',
+#         cursorclass=pymysql.cursors.DictCursor
+#     )
+
+
+>>>>>>> 0baf12fb1fd632acbfca04bacad4d9947318fd42
 
 def get_database_connection():
     return pymysql.connect(
@@ -31,18 +46,39 @@ def send():
 def home():
     return render_template("index.html")
 
-@app.route("/Shelter/")
+@app.route("/Shelter/", methods=['POST'])
 def shelter():
     return render_template("Shelter.html")
+
+
+def create():
+    name = request.headers['Content']
+    conn = get_database_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "INSERT INTO `todo` (`item`) VALUES (%s);"
+            cursor.execute(sql, (name))
+        conn.commit()
+    except Exception as e:
+        print('ERROR', e)
+        conn.close()
+        return str({'result': 'failure'}), 500
+
+    conn.close()
+    return str({'result': 'success'})
+
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
     print("Success")
     return render_template("ShelterProvider.html")
 
+<<<<<<< HEAD
 @app.route("/success/")
 def success():
     return render_template("success.html")
+=======
+>>>>>>> 0baf12fb1fd632acbfca04bacad4d9947318fd42
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
