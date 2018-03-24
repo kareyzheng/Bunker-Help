@@ -18,7 +18,7 @@ def get_database_connection():
 def home():
     return render_template("index.html")
 
-@app.route("/Shelter/", methods=['POST'])
+@app.route("/Shelter/")
 def shelter():
     return render_template("Shelter.html")
 
