@@ -62,7 +62,7 @@ def send():
     conn.commit()
 
     conn.close()
-    return render_template("success.html")
+    return render_template("map.html")
 
 @app.route("/success/")
 def success():
