@@ -7,10 +7,13 @@
     <title>NeedShelter</title>
 </head>
 <body>
-    <form action="/needs.php">
-        <center>Zip Code: <input type="text" name="ZipCode"><center><br>
-        <center>How many people? <input type="text" name="People"><center><br>
-    <input type="submit" value="Submit">
+    <form method="POST" action="/provide/">
+        <div class="help-form">
+            Zip Code: <input type="text" name="ZipCodeH"><br>
+            City: <input type="text" name="CityH"><br>
+            How many people? <input type="text" name="People"><br>
+        </div>
+   <input type="submit" value="Submit">
 </form>
 
 <p>Click the "Submit" button when done".</p>
