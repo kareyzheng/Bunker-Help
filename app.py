@@ -8,9 +8,9 @@ app = Flask(__name__)
 # def get_database_connection():
 #     return pymysql.connect(
 #         host='localhost',
-#         user='root',
+#         user='shelter',
 #         password='password',
-#         db='todo_database',
+#         db='shelter_database',
 #         charset='utf8mb4',
 #         cursorclass=pymysql.cursors.DictCursor
 #     )
@@ -22,13 +22,32 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/Shelter/")
+@app.route("/Shelter/", methods=['POST'])
 def shelter():
     return render_template("Shelter.html")
+
+
+def create():
+    name = request.headers['Content']
+    conn = get_database_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "INSERT INTO `todo` (`item`) VALUES (%s);"
+            cursor.execute(sql, (name))
+        conn.commit()
+    except Exception as e:
+        print('ERROR', e)
+        conn.close()
+        return str({'result': 'failure'}), 500
+
+    conn.close()
+    return str({'result': 'success'})
+
 
 @app.route("/ShelterProvider/")
 def shelterprovider():
     return render_template("ShelterProvider.html")
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
