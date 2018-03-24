@@ -16,17 +16,17 @@ app = Flask(__name__)
 #         cursorclass=pymysql.cursors.DictCursor
 #     )
 
-@app.route('/send', methods=['GET', 'POST'])
+@app.route('/send/', methods=['POST'])
 def send():
-    if request.method == "POST":
-        address = request.form['Adress']
-        city = request.form['City']
-        zip = request.form['ZipCode']
-        capacity = request.form['Capacity']
-        notes = request.form['Notes']
-        print("Success")
-    return render_template("test.html", address=address, city=city, zip=zip,capacity=capacity)
-    print("Fail")
+
+    address = request.form['Address']
+    city = request.form['City']
+    zip = request.form['ZipCode']
+    capacity = request.form['Capacity']
+    notes = request.form['Notes']
+    print("Success")
+    return render_template("test.html", address=address, zip=zip)
+
 
 @app.route("/")
 def home():
