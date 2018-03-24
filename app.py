@@ -4,16 +4,16 @@ import json
 
 app = Flask(__name__)
 
-#
-# def get_database_connection():
-#     return pymysql.connect(
-#         host='localhost',
-#         user='root',
-#         password='password',
-#         db='todo_database',
-#         charset='utf8mb4',
-#         cursorclass=pymysql.cursors.DictCursor
-#     )
+
+def get_database_connection():
+    return pymysql.connect(
+        host='localhost',
+        user='root',
+        password='password',
+        db='todo_database',
+        charset='utf8mb4',
+        cursorclass=pymysql.cursors.DictCursor
+     )
 
 
 
