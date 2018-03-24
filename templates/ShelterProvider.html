@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/style.css" />
 
     <meta charset="UTF-8">
     <title>ShelterProvider</title>
 </head>
 <body>
-    <form method="POST" action="/send/">
-        <div class="form-group" style="text-align:center">
-        Name: <input type="text" name="Name"><br>
-        Address: <input type="text" name="Address"><br>
-        City: <input type="text" name="City"><br>
-        Zip Code: <input type="text" name="ZipCode"><br>
-        Capacity: <input type="text" name="Capacity"><br>
-        Notes: <input type="text" name="Notes"><br>
-        Phone Number: <input type="text" name="Phone"><br>
-
+    <div class="content" style="background-color: rgb(160,160,160)">
+        <div class="box" style="background: gainsboro; padding-top: 5px; padding-bottom: 100%; margin-left: 30%; margin-right: 30%">
+            <form method="POST" action="/send/">
+                <div class="form-group" style="text-align:center; margin-bottom: 100px; margin-top: 100px">
+                    Name: <input type="text" name="Name"><br><br>
+                    Address: <input type="text" name="Address"><br><br>
+                    City: <input type="text" name="City"><br><br>
+                    Zip Code: <input type="text" name="ZipCode"><br><br>
+                    Capacity: <input type="text" name="Capacity"><br><br>
+                    Notes: <input type="text" name="Notes"><br><br>
+                    Phone Number: <input type="text" name="Phone"><br><br>
+                    <a href="/map/"><input class="btn btn-primary" type="submit" value="Submit"></a>
+                </div>
+            </form>
+            <br><p style="text-align:center">Click the "Submit" button when done.</p>
         </div>
-            <a href="/map/"><input class="btn btn-primary" type="submit" value="Submit"></a>
-    </form>
-
-
-
-<p>Click the "Submit" button when done.</p>
+    </div>
+</body>
 
 </body>
 </html>
