@@ -48,7 +48,8 @@ def provide():
     address = halfAddress+" " + zip+" " + city
     print("address:", address)
     position = geo(address)
-    print("position:", position)
+    print("positionFFFFFUUUUUCCCKKKK:", type(position))
+
 
     cursor = conn.cursor()
     avail = "SELECT address FROM shelter"
@@ -58,13 +59,15 @@ def provide():
     print("Length-----", len(addressFromData))
     address = []
     for i in range(len(addressFromData)):
-        address.append(geo(addressFromData[i]))
-
+        metric = geo(addressFromData[i])
+        print("FUCKKKKKKKKKKKKK", type(metric))
+        address.append(metric)
+        print("List Item---------", type(address))
     conn.close()
-    address = []
+
     #address = [{lat: 41.69512870000001, lng: -72.9863335},{lat: 45.69512870000001, lng: -70.9863335}]
     print("#############################", address)
-    return render_template("ShelterSeekerMap .html", position=str(position), address=str(address))
+    return render_template("ShelterSeekerMap .html", position=position, address=address)
 
 '''
     #
