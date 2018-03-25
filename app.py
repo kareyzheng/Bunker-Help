@@ -27,8 +27,8 @@ def geo(address):
     for result in results:
         geo = result['geometry']
         lat, lng = geo['location']['lat'], geo['location']['lng']
-        position = ("{lat: %s, lng: %s}" % (lat, lng))
-    return(position)
+        metrics = ("{lat: %s, lng: %s}" % (lat, lng))
+    return(metrics)
 
 @app.route("/")
 def home():
@@ -49,11 +49,25 @@ def provide():
     print("address:", address)
     position = geo(address)
     print("position:", position)
-    return render_template("ShelterSeekerMap .html", position=position)
 
+    cursor = conn.cursor()
+    avail = "SELECT address FROM shelter"
+    cursor.execute(avail)
+    addressFromData = [item['address'] for item in cursor.fetchall()]
+    print(addressFromData)
+    print("Length-----", len(addressFromData))
+    address = []
+    for i in range(len(addressFromData)):
+        address.append(geo(addressFromData[i]))
+
+    conn.close()
+    address = []
+    #address = [{lat: 41.69512870000001, lng: -72.9863335},{lat: 45.69512870000001, lng: -70.9863335}]
+    print("#############################", address)
+    return render_template("ShelterSeekerMap .html", position=str(position), address=str(address))
 
 '''
-    #cursor = conn.cursor()
+    #
     avail = "SELECT address FROM shelter;"
     cursor.execute(avail)
     address = [item['address'] for item in cursor.fetchall()]
@@ -64,15 +78,6 @@ def provide():
     def iterate():
         for i in address{}
     #list_matches = match.replace(",", os.linesep)
-
-    #if match == "()":
-    #    avail = "SELECT * FROM shelter WHERE city=%s AND capacity>=%s;"
-    #    cursor.execute(avail, (zipcode, people))
-    #    match = cursor.fetchall()
-
-
-    #conn.close()
-def integrate(var)
 '''
 
 

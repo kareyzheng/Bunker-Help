@@ -21,6 +21,7 @@
   <body>
     <h3 style="text-align: center; margin-top: 50px; margin-bottom: 50px">My Shelter</h3>
     <div id="map"></div>
+
     <script>
 
       function initMap() {
@@ -34,8 +35,8 @@
 
 
           var map = new google.maps.Map(document.getElementById('map'), options);
-
-        var shelterLocations = [];
+        console.log({{address}});
+        var shelterLocations = [{lat: 41.69512870000001, lng: -72.9863335},{lat: 45.69512870000001, lng: -70.9863335},[{lat: 43.69512870000001, lng: -60.9863335},{lat: 60.69512870000001, lng: -45.9863335}]];
         var arrayLength = shelterLocations.length;
         for (var i = 0; i < arrayLength; i++) {
             markerMaker(shelterLocations[i], map);
