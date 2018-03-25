@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da97035e-fa6e-4181-9465-9daa2aa6f5b6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/ShelterSeekerMap .html" afterPath="$PROJECT_DIR$/templates/ShelterSeekerMap .html" />
-    </list>
+    <list default="true" id="da97035e-fa6e-4181-9465-9daa2aa6f5b6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +11,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ShelterSeekerMap .html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShelterSeekerMap .html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/ShelterSeekerMap .html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="593">
@@ -50,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShelterProvider.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ShelterProvider.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/ShelterProvider.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -507,6 +505,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ShelterSeekerMap .html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="59" column="8" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Shelter.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -535,17 +544,6 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ShelterSeekerMap .html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="59" column="8" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
