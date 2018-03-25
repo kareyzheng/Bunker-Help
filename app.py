@@ -133,12 +133,12 @@ def update():
     conn = get_database_connection()
     
     cursor = conn.cursor()
-    
     delete = "DELETE * FROM shelter WHERE capacity=%s AND address=%s"
-    cursor.execute(delete, (people, Address))
-    
-    alter= "UPDATE shelter SET capacity-=%s WHERE address=%s"
-    cursor.execute(alter, (people, Address))
+    if delete:
+        cursor.execute(delete, (people, Address))
+    else:
+        alter= "UPDATE shelter SET capacity-=%s WHERE address=%s"
+        cursor.execute(alter, (people, Address))
     
     conn.commit()
     
