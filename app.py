@@ -124,6 +124,7 @@ def send():
     position = geo(address)
 
     return render_template("ShelterProviderMap.html", address=address, zip=zip, city=city, position=position)
+
 """
 @app.route('/update/', methods=['POST'])
 def update():
@@ -136,7 +137,7 @@ def update():
     delete = "DELETE * FROM shelter WHERE capacity=%s AND address=%s"
     cursor.execute(delete, (people, Address))
     
-    alter= "UPDATE shelter SET capacity-=%s WHERE address=%s'
+    alter= "UPDATE shelter SET capacity-=%s WHERE address=%s"
     cursor.execute(alter, (people, Address))
     
     conn.commit()
