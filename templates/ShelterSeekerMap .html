@@ -19,7 +19,7 @@
 
 
   <body>
-    <h3 style="text-align: center; margin-top: 50px; margin-bottom: 50px">My Shelter</h3>
+    <h3 style="text-align: center; margin-top: 50px; margin-bottom: 50px">Shelters</h3>
     <div id="map"></div>
 
     <script>
@@ -37,8 +37,8 @@
           var map = new google.maps.Map(document.getElementById('map'), options);
 
 
-        var shelterLocations = {{address|tojson|safe}};
-        var arrayLength = shelterLocations.length;
+        var shelterLocations = [{lat: 40.680203, lng: -73.975556}, {lat: 40.68259, lng: -73.976933}, {lat: 41.7311947, lng: -74.7010288}, {lat: 40.2311947, lng: -74.9910288}, {lat: 40.751947, lng: -74.9}, {lat: 40.7311947, lng: -74.0010288}, {lat: 40.6762846, lng: -73.9079141}, {lat: 40.697669, lng: -73.99381489999999}, {lat: 40.7245098, lng: -73.9736052}, {lat: 40.7245098, lng: -73.9736052}, {lat: 40.69512870000001, lng: -73.9863335}, {lat: 40.7186326, lng: -73.9534022}];
+        var arrayLength = 12;
         for (var i = 0; i < arrayLength; i++) {
             markerMaker(shelterLocations[i], map);
         }
@@ -59,7 +59,7 @@
         });
 
         var infoWindow = new google.maps.InfoWindow({
-          content: '<h1>'+ '{{ address }}' +': Has been added as a private shelter.</h1>'
+          content: '<h1>Shelter Code: 92,   '+ 'This address appears to be the closest private shelter' +': Please contact the owners at: 929 330 8210.</h1>'
         });
 
         marker.addListener('click', function(){
@@ -76,8 +76,8 @@
         <br>
         <p>Please input the location of your choosing:</p>
         <form method="POST" action="/update/">
-            Address: <input type="text" name="address">
-            How many people? <input type="text" name="people"><br><br>
+            Shelter Code: <input type="text" name="address">
+            How many people will you be arriving with? <input type="text" name="people"><br><br>
             <input type="submit" value="Submit"><br>
             <br><p>Click the "Submit" button when done".</p>
         </form>

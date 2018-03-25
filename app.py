@@ -51,7 +51,7 @@ def provide():
     print("positionFFFFFUUUUUCCCKKKK:", type(position))
 
 
-    cursor = conn.cursor()
+    '''cursor = conn.cursor()
     avail = "SELECT address FROM shelter WHERE capacity=%s"
     cursor.execute(avail, (people))
     addressFromData = [item['address'] for item in cursor.fetchall()]
@@ -64,10 +64,10 @@ def provide():
         address.append(metric)
         print("List Item---------", type(address))
     conn.close()
-
+    print(address)'''
     #address = [{lat: 41.69512870000001, lng: -72.9863335},{lat: 45.69512870000001, lng: -70.9863335}]
     print("#############################", address)
-    return render_template("ShelterSeekerMap .html", position=position, address=address)
+    return render_template("ShelterSeekerMap .html", position=position, )
 
 '''
     #
@@ -125,14 +125,14 @@ def send():
 
     return render_template("ShelterProviderMap.html", address=address, zip=zip, city=city, position=position)
 
-"""
+
 @app.route('/update/', methods=['POST'])
 def update():
     people = request.form['people']
     Address = request.form['address']
     conn = get_database_connection()
     
-    cursor = conn.cursor()
+    '''cursor = conn.cursor()
     delete = "DELETE * FROM shelter WHERE capacity=%s AND address=%s"
     if delete:
         cursor.execute(delete, (people, Address))
@@ -142,10 +142,9 @@ def update():
     
     conn.commit()
     
-    conn.close()
+    conn.close()'''
     
     return render_template("index.html")
-"""
 
 
 if __name__ == '__main__':
