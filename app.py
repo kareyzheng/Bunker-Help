@@ -71,7 +71,9 @@ def provide():
     #    match = cursor.fetchall()
 
 
-    #conn.close()'''
+    #conn.close()
+def integrate(var)
+'''
 
 
 @app.route("/ShelterProvider/")
