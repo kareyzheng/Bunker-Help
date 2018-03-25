@@ -46,9 +46,9 @@ def provide():
     city = request.form['CityH']
     conn = get_database_connection()
     address = halfAddress+" " + zip+" " + city
-    print(address)
+    print("address:", address)
     position = geo(address)
-    print(position)
+    print("position:", position)
     return render_template("ShelterSeekerMap .html", position=position)
 
 

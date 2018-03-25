@@ -20,23 +20,37 @@
     <div id="map"></div>
     <script>
 
-
       function initMap() {
         //var address =
         var midpoint = {{position}};
+
+
         var options = {
             zoom: 15,
-            center: midpoint}
+            center: midpoint};
 
 
-          var map = new
-          google.maps.Map(document.getElementById('map'), options);
-        //var position = geocode();
-        console.log("im in init map");
-        //console.log(position);
+          var map = new google.maps.Map(document.getElementById('map'), options);
+
+        var shelterLocations = [];
+        var arrayLength = shelterLocations.length;
+        for (var i = 0; i < arrayLength; i++) {
+            markerMaker(shelterLocations[i], map);
+        }
+        //markerMaker({{position}}, map);
+
+        //console.log({{position}});
+
+      }
+
+      function markerMaker(pos, map1) {
+      console.log(pos);
+      //console.log(map1);
+
         var marker = new google.maps.Marker({
-          position: {{position}},
-          map:map
+              position: pos,
+              map: map1
+              //animation: animation
         });
 
         var infoWindow = new google.maps.InfoWindow({
@@ -44,15 +58,18 @@
         });
 
         marker.addListener('click', function(){
-          infoWindow.open(map, marker)
+          infoWindow.open(map1, marker)
         });
       }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Udy3X-6-BGZaJt-SIT0OrvUWo_i4uWs&callback=initMap">
+
     </script>
 
 
   Thank you for aiding your community in times of need
+   </body>
+
 
 </html>
