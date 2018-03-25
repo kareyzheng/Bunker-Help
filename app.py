@@ -52,8 +52,8 @@ def provide():
 
 
     cursor = conn.cursor()
-    avail = "SELECT address FROM shelter"
-    cursor.execute(avail)
+    avail = "SELECT address FROM shelter WHERE capacity=%s"
+    cursor.execute(avail, (people))
     addressFromData = [item['address'] for item in cursor.fetchall()]
     print(addressFromData)
     print("Length-----", len(addressFromData))
