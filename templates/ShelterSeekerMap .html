@@ -25,26 +25,31 @@
     <script>
 
       function initMap() {
-        //var address =
-        var midpoint = {{position}};
+
+        var midpoint = {lat: 45.69512870000001, lng: -70.9863335};
         console.log("FUCK YOU")
 
         var options = {
-            zoom: 15,
+            zoom: 0,
             center: midpoint};
 
 
-          var map = new google.maps.Map(document.getElementById('map'), options);
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        console.log({{address|tojson|safe}}.length)
+        console.log("ADDRESS",JSON.parse({{address|tojson|safe}}));
+        var arrayGeo = JSON.parse({{address|tojson|safe}})
+        console.log("SEX",arrayGeo)
+        var shelterLocations = {{address|safe}}.length
+        console.log("LIST LENGTH",shelterLocations)
 
-
-        var shelterLocations = {{address|tojson|safe}};
-        var arrayLength = shelterLocations.length;
+        var shelterLocations = arrayGeo ;
+        var arrayLength = {{address|safe}}.length;
         for (var i = 0; i < arrayLength; i++) {
             markerMaker(shelterLocations[i], map);
         }
-        //markerMaker({{position}}, map);
+        //markerMaker({{position|tojson|safe}}, map);
 
-        console.log("POSITION", {{position}});
+        console.log("POSITION", {{position|tojson|safe}});
 
       }
 

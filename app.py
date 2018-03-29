@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify, json
 import pymysql
 import os
 
@@ -61,13 +61,13 @@ def provide():
     for i in range(len(addressFromData)):
         metric = geo(addressFromData[i])
         print("FUCKKKKKKKKKKKKK", type(metric))
-        address.append(metric)
-        print("List Item---------", type(address))
+        address.append((metric))
+        print("List Item---------", type(address), address)
     conn.close()
 
     #address = [{lat: 41.69512870000001, lng: -72.9863335},{lat: 45.69512870000001, lng: -70.9863335}]
     print("#############################", address)
-    return render_template("ShelterSeekerMap .html", position=position, address=address)
+    return render_template("ShelterSeekerMap .html", position=position, address=json.dumps(address))
 
 '''
     #
